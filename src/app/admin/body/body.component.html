@@ -1,0 +1,11 @@
+<div class="body" [ngClass]="getBodyClass()">
+    <!-- <app-ng-dynamic-breadcrumb></app-ng-dynamic-breadcrumb>
+    <app-statistics *ngIf="activePage=='/admin'"></app-statistics> -->
+    <div class="container-fluid page">
+        <div class="d-flex page__box p-3 mt-2">Home</div>
+        <div class="page__content shadow p-3 position-relative text-center">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+   
+</div>
