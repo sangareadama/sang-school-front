@@ -20,4 +20,8 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+ 
+  it("my first testing",()=>{ 
+    expect(component.valeur).toBe("okkkk")  
+  }) 
 });

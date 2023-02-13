@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
 
   constructor( private router : Router ) { }
 
+  valeur="okkkk";
+
   ngOnInit(): void { 
     // this.onGetUser()
     this.checkCanShowSearchAsOverlay(window.innerWidth);
