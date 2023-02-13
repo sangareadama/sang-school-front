@@ -6,16 +6,18 @@ import { AppComponent } from './app.component';
 import { AdminModule } from "./admin/admin.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './admin/services/AuthInterceptor/token.interceptor';
+   
 @NgModule({
-    declarations: [ 
+    declarations: [   
         AppComponent
     ],
-    providers: [],
+    providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
-        AppRoutingModule,
+        AppRoutingModule, 
         AdminModule,
         CommonModule, 
         BrowserAnimationsModule  

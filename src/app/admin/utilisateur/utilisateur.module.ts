@@ -29,7 +29,7 @@ const routes: Routes = [
     CommonModule,
     CalendarModule,
     FormsModule,
-    TableModule,
+    TableModule,  
     
     RouterModule.forChild(routes),
   ]

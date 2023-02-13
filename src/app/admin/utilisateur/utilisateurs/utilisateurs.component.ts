@@ -13,8 +13,8 @@ export class UtilisateursComponent implements OnInit {
   birthday!:Date;
 
   ngOnInit(): void {
-    this.Authentication(this.loginData);
-    this.onGetUtilisateur(); 
+    //this.Authentication(this.loginData);
+   this.onGetUtilisateur(); 
    
   }
 
@@ -26,8 +26,8 @@ export class UtilisateursComponent implements OnInit {
   message!:string;
   utilisateur:Utilisateur= new Utilisateur(0,"","","",""); 
   loginData={
-    email:"abdoul@",
-    password:"traore"  
+    email:"sang@",
+    password:"123"   
   };
 
   public onGetUtilisateur(){
@@ -37,7 +37,7 @@ export class UtilisateursComponent implements OnInit {
         console.log(this.utilisateurs)
       }, 
       (error:HttpErrorResponse)=>{   
-          // alert(error.message);
+          alert(error.message);
       }
     );  
   } 
