@@ -18,6 +18,11 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
+import {CalendarModule} from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+
 const adminRouter = [
   {path: 'admin', component: MainAdminComponent, 
     
@@ -29,7 +34,11 @@ const adminRouter = [
       {
         path: 'products',    
         loadChildren: () => import('./produits/produits.module').then(m => m.ProduitsModule)
-      },   
+      }, 
+      {
+        path: 'utilisateur',    
+        loadChildren: () => import('./utilisateur/utilisateur.module').then(m => m.UtilisateurModule)
+      },  
       // {  
       //   path: 'coupens',    
       //   loadChildren: () => import('./coupens/coupens-routing.module').then(m => m.CoupensRoutingModule)
@@ -60,6 +69,7 @@ const adminRouter = [
     MainAdminComponent,
     
      
+     
     SublevelMenuComponent, HeaderComponent, 
    
   ],
@@ -68,8 +78,12 @@ const adminRouter = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    OverlayModule,
+    OverlayModule,  
     CdkMenuModule,
+    CalendarModule,
+    FormsModule,
+    TableModule,
+    HttpClientModule,
     RouterModule.forRoot(adminRouter),
   ],
   exports:[
