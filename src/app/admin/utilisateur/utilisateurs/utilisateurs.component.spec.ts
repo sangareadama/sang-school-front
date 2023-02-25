@@ -15,9 +15,9 @@ describe('UtilisateursComponent', () => {
     fixture = TestBed.createComponent(UtilisateursComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  });   
 
-  it('should create', () => {
+  it('should create', () => {  
     expect(component).toBeTruthy();
   });
 });
