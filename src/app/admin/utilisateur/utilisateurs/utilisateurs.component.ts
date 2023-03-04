@@ -17,8 +17,8 @@ export class UtilisateursComponent implements OnInit {
   birthday!:Date;
 
   ngOnInit(): void {
-   //this.Authentication(this.loginData);
-  this.onGetUtilisateur(); 
+  this.Authentication(this.loginData);
+  //this.onGetUtilisateur(); 
      
   }
 

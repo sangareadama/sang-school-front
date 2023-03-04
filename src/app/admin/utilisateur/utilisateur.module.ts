@@ -49,7 +49,6 @@ const routes: Routes = [
     CalendarModule,
     FormsModule,
     TableModule,  
-    InputTextModule,
     FormsModule,
     InputTextModule,
     HttpClientModule,

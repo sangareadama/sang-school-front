@@ -8,7 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './admin/services/AuthInterceptor/token.interceptor';
-   
+import {CardModule} from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { HomeModule } from './home/home.module';
 @NgModule({
     declarations: [   
         AppComponent
@@ -20,7 +22,9 @@ import { TokenInterceptor } from './admin/services/AuthInterceptor/token.interce
         AppRoutingModule, 
         AdminModule,
         CommonModule, 
-        BrowserAnimationsModule  
+        BrowserAnimationsModule ,
+        CardModule,
+        ButtonModule,
     ]
 })
 export class AppModule { }

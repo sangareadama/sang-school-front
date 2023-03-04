@@ -6,6 +6,7 @@ import { PagesComponent } from './admin/pages/pages.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { AccueilComponent } from './home/accueil/accueil.component';
+import { LoginComponent } from './home/login/login.component';
 
 const routes: Routes = [
   {path: '',  redirectTo : '/accueil',
@@ -24,6 +25,7 @@ const routes: Routes = [
     },
     pathMatch:'full',   
   },
+  {path:"login",component:LoginComponent},
   {path:"utilisateur",component:ProductsComponent},
   {path:"statistics",component:StatisticsComponent},
   {path:"pages",component:PagesComponent},
