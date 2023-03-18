@@ -11,6 +11,8 @@ import { TokenInterceptor } from './admin/services/AuthInterceptor/token.interce
 import {CardModule} from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { HomeModule } from './home/home.module';
+
+
 @NgModule({
     declarations: [   
         AppComponent
@@ -25,6 +27,7 @@ import { HomeModule } from './home/home.module';
         BrowserAnimationsModule ,
         CardModule,
         ButtonModule,
+        
     ]
 })
 export class AppModule { }

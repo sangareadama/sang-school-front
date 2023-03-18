@@ -20,6 +20,9 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import {CardModule} from 'primeng/card';
 import {PasswordModule} from 'primeng/password';
 import {MatCardModule} from '@angular/material/card';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -48,7 +51,11 @@ import {MatCardModule} from '@angular/material/card';
     TreeSelectModule, 
     CardModule, 
     PasswordModule ,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatFormFieldModule,
+    ProgressSpinnerModule,
+
     
   ]
 })

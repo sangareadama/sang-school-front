@@ -18,9 +18,10 @@ export class LoginComponent implements OnInit  {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-  
+  isLoading = false;
+  hide = true;
 
-  password:string;
+  password:string
   
 
 }
