@@ -39,17 +39,40 @@
 
 <div class="bootstrap-wrapper">
     <div class="container">
-        <div class="row">
+        
             <div class="col-md-6 offset-md-3">
-                
-                <mat-card>
-                    <!-- <div class="container text-center">
-                       <img src="../../assets/images/PAGE SITE SUZANG-05DASH.png"  alt="">
-                    </div>  -->
-                    <h1 class="text-center">Login ici !</h1>
+                <form [formGroup]="loginForm" (ngSubmit)="connexion()">
+                        <!-- <div class="logo-cei">
+                            <img src="../../../../assets/img/cei.png" alt="logo cei">
+                        </div> -->
+                        <div class="partie-connexion">
+                            <h2 class="titre">Connexion </h2>
+                            <div class="field">  
+                                <!-- <label for="username" class="block"> username</label> -->
+                                <input [style]="{'width': '14.5rem', 'height' : '40px'}" type="text" pInputText placeholder="username" formControlName="username"> 
+                            </div>
+                            <small  class="p-error block" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.dirty" >username requis</small>
+                            <br>
+                            <div class="field">
+                                <!-- <label for="username" class="block"> username</label> -->
+                                <p-password formControlName="password" [toggleMask]="true" [feedback]="true" placeholder="password" [style]="{'height' : '40px'}"></p-password> 
+                                
+                            </div>
+                            <small  class="p-error block" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.dirty" >password requis</small>
+                            <div class="flex justify-content-end flex-wrap">
+                                <button [style]="{'width': '14.5rem', 'height' : '40px'}" pButton *ngIf="!isLoading" label="Se connecter" class="p-button-sm m-4 bouton-connexion" type="submit" [disabled]="loginForm.invalid"></button>
+                                <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+                            </div> 
+                            
+                        </div>
+                            <span *ngIf="messageActif" class="flex justify-content-center mt-6">
+                                <p-message severity="error" [text]="messageErreur"></p-message>
+                            </span>
+                        
+        
                         <!-- {{loginData | json}}   -->
                            
-                    <form   class="example-form">
+                    <!-- <form   class="example-form">
                         <div class="grid">
                             <div class="p-col-12 m-5">
                                 <div class="p-inputgroup">
@@ -60,12 +83,12 @@
                                 <!-- <div class="p-inputgroup">
                                     <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                                     <input type="password" pInputText placeholder="Username">         
-                                </div> -->
+                                </div> 
                                 <br>
                                 <div class="p-inputgroup">
                                     <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                                     <p-password  [toggleMask]="true"  class="p-button-sm" [style]="{'width': '60vw', 'height' : '3rem'}"></p-password>
-                                    <!-- <p-password formControlName="motPasse" [toggleMask]="true" [feedback]="true" placeholder="Mot de passe" [style]="{'width': '34rem', 'height' : '3rem'}"></p-password> -->
+                                    <!-- <p-password formControlName="motPasse" [toggleMask]="true" [feedback]="true" placeholder="Mot de passe" [style]="{'width': '34rem', 'height' : '3rem'}"></p-password> 
                                 </div>
                                 <br>
                                 <div class="p-inputgroup">
@@ -79,7 +102,7 @@
                             <a style="margin-left: 1em;" routerLink="/home/sign-up">Créer un compte</a> 
                         </div>
 
-                    </form>
+                    </form> -->
                      
                     
                     <!-- <form class="example-form">
@@ -93,9 +116,10 @@
                           <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
                         </mat-form-field>
                       </form> -->
-                </mat-card>
+                    
+                </form>
             </div>
-        </div>
+        
     </div>
 
 </div>

@@ -23,6 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MessageModule } from 'primeng/message';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule,
     MatFormFieldModule,
     ProgressSpinnerModule,
+    MessageModule
 
     
   ]

@@ -1,31 +1,16 @@
 .bootstrap-wrapper{
     margin-top: 5em;
+    margin-left: 1.5em;
   }
-
-#pass{
-    width: 100vw !important;
-    height: 3rem !important;
-}
-
   .classCenter{
     justify-content: flex-start;
   }
 
-  mat-card{
+  .col-md-6{
     background-color: #ac7c4f;
-    border-radius: 2em;
+    border-radius: 1em;
+    width: 20em;
   }
-  .login {
-    .p-inputgroup-addon {
-      border: none;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-  }
-
-
-
-    
 
   
 

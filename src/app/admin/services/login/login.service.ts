@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Credentials } from '../../Models/Credential';
 import { Utilisateur } from '../../Models/Utilisateur';
 
 @Injectable({
@@ -24,7 +25,8 @@ export class LoginService {
   
 
   // Authenticate and generate token   
-  public  Authentication(loginData:any):Observable<any>{
+  public  Authentication(loginData:Credentials):Observable<any>{
+    console.log("on a"+ loginData.username)
     return this.http.post<any>(`${this.apiServerUrl}/api/auth/authenticate`,loginData)
   }
 
