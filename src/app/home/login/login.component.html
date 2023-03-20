@@ -65,6 +65,11 @@
                             </div> 
                             
                         </div>
+                        <div class="input-field s12"> 
+                            <a routerLink="/forgot-password">Mot de passe oublié ?</a>
+                            <a style="margin-left: 1em;" routerLink="/home/sign-up">Créer un compte</a> 
+                        </div>
+
                             <span *ngIf="messageActif" class="flex justify-content-center mt-6">
                                 <p-message severity="error" [text]="messageErreur"></p-message>
                             </span>
