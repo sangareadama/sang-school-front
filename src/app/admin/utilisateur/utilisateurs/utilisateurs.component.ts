@@ -17,8 +17,8 @@ export class UtilisateursComponent implements OnInit {
   birthday!:Date;
 
   ngOnInit(): void {
-  this.Authentication(this.loginData);
-  //this.onGetUtilisateur(); 
+ 
+  this.onGetUtilisateur(); 
      
   }
 
@@ -29,11 +29,7 @@ export class UtilisateursComponent implements OnInit {
   utilisateurForm!:FormGroup;
   message!:string;
   utilisateur:Utilisateur= new Utilisateur(0,"","","","",""); 
-  utilisateurUpdate:Utilisateur = new Utilisateur(0,"","","","","")
-  loginData={
-    email:"sang@",
-    password:"123"   
-  };
+  utilisateurUpdate:Utilisateur = new Utilisateur(0,"","","","",""); 
   saveUtilisateur!: boolean; 
   updateUtilisateur!: boolean;  
   deleteUtilisateur!: boolean;
@@ -58,7 +54,6 @@ export class UtilisateursComponent implements OnInit {
     password:new FormControl(null, Validators.required) ,
     })  
   } 
-
 
   public onSaveUtilisateur(){ 
     this.submitted = true;       

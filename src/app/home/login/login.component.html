@@ -49,9 +49,9 @@
                             <h2 class="titre">Connexion </h2>
                             <div class="field">  
                                 <!-- <label for="username" class="block"> username</label> -->
-                                <input [style]="{'width': '14.5rem', 'height' : '40px'}" type="text" pInputText placeholder="username" formControlName="username"> 
+                                <input [style]="{'width': '14.5rem', 'height' : '40px'}" type="text" pInputText placeholder="email" formControlName="email"> 
                             </div>
-                            <small  class="p-error block" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.dirty" >username requis</small>
+                            <small  class="p-error block" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.dirty" >email requis</small>
                             <br>
                             <div class="field">
                                 <!-- <label for="username" class="block"> username</label> -->

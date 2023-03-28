@@ -33,10 +33,10 @@ export class TokenInterceptor implements HttpInterceptor {
         .pipe(
           catchError(error=>{
             console.log(error)
-            if(error.status===403){
-               this.login.logout();
-               alert('session expirée')
-            }
+            // if(error.status===403){
+            //    this.login.logout();
+            //    alert('session expirée')
+            // }
             return throwError("session expirée");
           })  
         )

@@ -16,17 +16,13 @@ export class LoginService {
 
   //current user 
   public getCurrentUser():Observable<any>{ 
-    let UserToken=this.getToken();
-    //  let Head_object= new HttpHeaders().set("Authorization","Bearer "+UserToken)
-    //  alert('voila '+Head_object.get("Authorization"))
-    // return this.http.get(`${this.apiServerUrl}/api/current_user`,{headers:Head_object})
+    let UserToken=this.getToken(); 
     return this.http.get<any>(`${this.apiServerUrl}/api/current_user`)
   } 
   
 
   // Authenticate and generate token   
   public  Authentication(loginData:Credentials):Observable<any>{
-    console.log("on a"+ loginData.username)
     return this.http.post<any>(`${this.apiServerUrl}/api/auth/authenticate`,loginData)
   }
 
