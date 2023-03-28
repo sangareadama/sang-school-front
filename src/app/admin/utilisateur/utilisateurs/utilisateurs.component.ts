@@ -17,7 +17,6 @@ export class UtilisateursComponent implements OnInit {
   birthday!:Date;
 
   ngOnInit(): void {
-  this.Authentication(this.loginData);
   //this.onGetUtilisateur(); 
      
   }
@@ -30,10 +29,7 @@ export class UtilisateursComponent implements OnInit {
   message!:string;
   utilisateur:Utilisateur= new Utilisateur(0,"","","","",""); 
   utilisateurUpdate:Utilisateur = new Utilisateur(0,"","","","","")
-  loginData={
-    email:"sang@",
-    password:"123"   
-  };
+ 
   saveUtilisateur!: boolean; 
   updateUtilisateur!: boolean;  
   deleteUtilisateur!: boolean;
@@ -119,7 +115,7 @@ export class UtilisateursComponent implements OnInit {
         // }
       }
     );
-  }
+  } 
 
  public Authentication(logdata:any){
     this.login.Authentication(logdata).subscribe({

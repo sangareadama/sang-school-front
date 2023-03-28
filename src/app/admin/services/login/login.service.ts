@@ -26,7 +26,7 @@ export class LoginService {
 
   // Authenticate and generate token   
   public  Authentication(loginData:Credentials):Observable<any>{
-    console.log("on a"+ loginData.username)
+    console.log("on a: "+ loginData.username+" "+loginData.password)
     return this.http.post<any>(`${this.apiServerUrl}/api/auth/authenticate`,loginData)
   }
 
