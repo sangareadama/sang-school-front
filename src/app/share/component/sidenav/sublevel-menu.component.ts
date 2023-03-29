@@ -8,7 +8,7 @@ import { INavbarData } from './helper';
   template: `
     <ul *ngIf="collapsed && data.items && data.items.length>0"
     [@submenu]="expanded
-    ? {value:'visible',
+    ? {value:'visible',  
       params:{transitionParams:'400ms cubic-bezier(0.86,0,0.07,1)',height:'*'}}
     :{value:'hidden',
       params:{transitionParams:'400ms cubic-bezier(0.86,0,0.07,1)',height:'0'}}"
@@ -17,7 +17,7 @@ import { INavbarData } from './helper';
       <li *ngFor="let item of data.items" class="sublevel-nav-item">
           <a class="sublevel-nav-link" 
           (click)="handleClick(item)" 
-          *ngIf="item.items && item.items.length>0 "
+          *ngIf="item.items && item.items.length>0 " 
           [ngClass]="getActiveClass(item)">
           <!-- [class]="data.icon" -->
              <i class ="sublevel-link-icon" [class]="item.icon"></i> 

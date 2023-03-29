@@ -11,6 +11,7 @@ import { TokenInterceptor } from './admin/services/AuthInterceptor/token.interce
 import {CardModule} from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { HomeModule } from './home/home.module';
+import { ShareModule } from './share/share.module';
 
 
 @NgModule({
@@ -22,11 +23,11 @@ import { HomeModule } from './home/home.module';
     imports: [
         BrowserModule,
         AppRoutingModule, 
-        AdminModule,
         CommonModule, 
         BrowserAnimationsModule ,
-        CardModule,
+        CardModule,  
         ButtonModule,
+      
         
     ]
 })

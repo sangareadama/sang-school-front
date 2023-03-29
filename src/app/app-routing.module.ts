@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { MainAdminComponent } from './admin/main-admin/main-admin.component';
 import { PagesComponent } from './admin/pages/pages.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { AccueilComponent } from './home/accueil/accueil.component';
 import { LoginComponent } from './home/login/login.component';
+import { MainAdminComponent } from './share/component/main-admin/main-admin.component';
 
 const routes: Routes = [
   {path: '',  redirectTo : '/accueil',

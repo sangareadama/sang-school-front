@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { BodyComponent } from './body/body.component';
+import { SidenavComponent } from '../share/component/sidenav/sidenav.component';
+import { BodyComponent } from '../share/component/body/body.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { StatisticsComponent } from './statistics/statistics.component';
@@ -9,13 +9,13 @@ import { CoupensComponent } from './coupens/coupens.component';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
-import { MainAdminComponent } from './main-admin/main-admin.component';
+import { MainAdminComponent } from '../share/component/main-admin/main-admin.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
+import { SublevelMenuComponent } from '../share/component/sidenav/sublevel-menu.component';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from '../share/component/header/header.component';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {CalendarModule} from 'primeng/calendar';
@@ -57,8 +57,7 @@ const adminRouter = [
 
 @NgModule({
   declarations: [
-    SidenavComponent,
-    BodyComponent,   
+       
     DashboardComponent,
     ProductsComponent,
     StatisticsComponent,
@@ -66,11 +65,9 @@ const adminRouter = [
     PagesComponent,
     MediaComponent,
     SettingsComponent,  
-    MainAdminComponent,
     
-     
-     
-    SublevelMenuComponent, HeaderComponent, 
+    
+  
    
   ],
   imports: [  
@@ -88,7 +85,6 @@ const adminRouter = [
   ],
   exports:[
    
-    MainAdminComponent,
     DashboardComponent,
   
   ], 

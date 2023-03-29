@@ -6,7 +6,7 @@
         <!-- <div class="logo-text" @fadeInOut *ngIf="collapsed">Angular</div> -->
         <button class="btn-close" @rotate  *ngIf="collapsed" (click)="closeSidenav()">
             <i class="fal fa-times close-icon"></i>
-        </button>
+        </button> 
     </div>
     <div class="scrollwrap scrollwrap_delayed">
         <ul class="sidenav-nav">
@@ -14,6 +14,7 @@
                 <a class="sidenav-nav-link" (click)="handleClick(data)"
                     *ngIf="data.items && data.items.length>0"
                     [ngClass]="getActiveClass(data)"
+                    (click)="toggleAdminItems()"
                 >
                     <i class="sidenav-link-icon" [class]="data.icon"></i>
                     <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">

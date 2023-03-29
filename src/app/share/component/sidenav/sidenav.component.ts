@@ -43,7 +43,7 @@ export class SidenavComponent implements OnInit {
   multiple:boolean=false;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize(event: any) { 
     this.screenWidth = window.innerWidth;
     if(this.screenWidth <= 768 ) {
       this.collapsed = false;
@@ -64,7 +64,14 @@ export class SidenavComponent implements OnInit {
     this.collapsed = !this.collapsed;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
   }
-
+ 
+  toggleAdminItems(): void {
+		if (!this.collapsed) {
+			this.collapsed = true;
+			this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+		}
+	}
+  
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});

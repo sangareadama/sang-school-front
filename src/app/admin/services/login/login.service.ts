@@ -18,7 +18,7 @@ export class LoginService {
   public getCurrentUser():Observable<any>{ 
     let UserToken=this.getToken(); 
     return this.http.get<any>(`${this.apiServerUrl}/api/current_user`)
-  } 
+  }   
   
 
   // Authenticate and generate token   
@@ -28,7 +28,7 @@ export class LoginService {
 
 
   public Login(loginData:any):Observable<any>{
-    console.log(loginData); 
+    console.log(loginData);  
     this.autoLogOut(200);
     return this.http.post<any>(`${this.apiServerUrl}/login`,loginData)
   }   

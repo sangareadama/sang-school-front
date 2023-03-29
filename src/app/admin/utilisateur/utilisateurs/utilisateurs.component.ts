@@ -17,8 +17,7 @@ export class UtilisateursComponent implements OnInit {
   birthday!:Date;
 
   ngOnInit(): void {
- 
-  this.onGetUtilisateur(); 
+  //this.onGetUtilisateur(); 
      
   }
 
@@ -29,7 +28,8 @@ export class UtilisateursComponent implements OnInit {
   utilisateurForm!:FormGroup;
   message!:string;
   utilisateur:Utilisateur= new Utilisateur(0,"","","","",""); 
-  utilisateurUpdate:Utilisateur = new Utilisateur(0,"","","","",""); 
+  utilisateurUpdate:Utilisateur = new Utilisateur(0,"","","","","")
+ 
   saveUtilisateur!: boolean; 
   updateUtilisateur!: boolean;  
   deleteUtilisateur!: boolean;
@@ -114,7 +114,7 @@ export class UtilisateursComponent implements OnInit {
         // }
       }
     );
-  }
+  } 
 
  public Authentication(logdata:any){
     this.login.Authentication(logdata).subscribe({

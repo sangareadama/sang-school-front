@@ -3,7 +3,7 @@
   
 
 <div class="row">
-  <div class="card col-md-10">
+  <div class="card col-md-12">
     <p-table #dt1 [value]="utilisateurs" dataKey="id" editMode="row"  [scrollable]="true" scrollHeight="500px" [virtualScroll]="true" [virtualScrollItemSize]="46">
       <ng-template pTemplate="caption">
         <div class="flex">
@@ -150,6 +150,7 @@
             <label for="nom">Nom</label>
             <input type="text" pInputText id="libelle" formControlName="nom" required autofocus />
             <small class="p-error" *ngIf="submitted && !utilisateur.nom">contenu is required.</small>
+            <small  class="p-error block" *ngIf="utilisateurForm.get('nom')?.invalid && utilisateurForm.get('nom')?.dirty" >username requis</small>
           </div> 
   
           <div class="field">
@@ -180,4 +181,7 @@
   
   </div>
 </div>
+
+
+
 
