@@ -34,8 +34,7 @@ import { MessageModule } from 'primeng/message';
   imports: [
     CommonModule,
     FormsModule,
-    TableModule,    
-    FormsModule,
+    
     InputTextModule,
     HttpClientModule,
     ButtonModule,
@@ -51,10 +50,8 @@ import { MessageModule } from 'primeng/message';
     MessagesModule,
     TreeSelectModule, 
     CardModule, 
-    PasswordModule ,
-    MatCardModule,
-    MatIconModule,
-    MatFormFieldModule,
+    PasswordModule , 
+  
     ProgressSpinnerModule,
     MessageModule
 

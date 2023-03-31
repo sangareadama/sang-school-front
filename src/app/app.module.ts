@@ -27,6 +27,7 @@ import { ShareModule } from './share/share.module';
         BrowserAnimationsModule ,
         CardModule,  
         ButtonModule,
+        ShareModule,
       
         
     ]

@@ -14,7 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SublevelMenuComponent } from '../share/component/sidenav/sublevel-menu.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from '../share/component/header/header.component';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
@@ -22,37 +22,48 @@ import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
+import { UtilisateursComponent } from './utilisateur/utilisateurs/utilisateurs.component';
+import { AccueilComponent } from '../home/accueil/accueil.component';
 
-const adminRouter = [
-  {path: 'admin', component: MainAdminComponent, 
+
+const routes: Routes = [
+  {  
+    path:'',
+    component: AccueilComponent,
+    // component: ResetPasswordComponent,
+  },
+];
+ 
+// const adminRouter = [
+//   {path: '', component: MainAdminComponent, 
     
-    children:[
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'statistics', component: StatisticsComponent},
+//     children:[
+//       {path: 'dashboard', component: DashboardComponent},
+//       {path: 'statistics', component: StatisticsComponent},
       
-      
-      {
-        path: 'products',    
-        loadChildren: () => import('./produits/produits.module').then(m => m.ProduitsModule)
-      }, 
-      {
-        path: 'utilisateur',    
-        loadChildren: () => import('./utilisateur/utilisateur.module').then(m => m.UtilisateurModule)
-      },  
-      // {  
-      //   path: 'coupens',    
-      //   loadChildren: () => import('./coupens/coupens-routing.module').then(m => m.CoupensRoutingModule)
-      // },  
-      // {path: 'media',  
-      //   loadChildren: () => import('./pages-admin/pages-admin.module').then(m => m.PagesAdminModule)
-      // },
-      // {path: 'pages',
-      // loadChildren: () => import('./pages-admin/pages-admin.module').then(m => m.PagesAdminModule)
-      // },
-      // {path: 'settings', component: SettingsComponent}
+       
+//       {
+//         path: 'products',    
+//         loadChildren: () => import('./produits/produits.module').then(m => m.ProduitsModule)
+//       }, 
+//       {
+//         path: 'utilisateur',    
+//         loadChildren: () => import('./utilisateur/utilisateur.module').then(m => m.UtilisateurModule)
+//       },  
+//       // {  
+//       //   path: 'coupens',    
+//       //   loadChildren: () => import('./coupens/coupens-routing.module').then(m => m.CoupensRoutingModule)
+//       // },  
+//       // {path: 'media',  
+//       //   loadChildren: () => import('./pages-admin/pages-admin.module').then(m => m.PagesAdminModule)
+//       // },
+//       // {path: 'pages',
+//       // loadChildren: () => import('./pages-admin/pages-admin.module').then(m => m.PagesAdminModule)
+//       // },
+//       // {path: 'settings', component: SettingsComponent}
 
-    ]},  
-]
+//     ]},  
+// ]
 
 
 @NgModule({
@@ -65,23 +76,17 @@ const adminRouter = [
     PagesComponent,
     MediaComponent,
     SettingsComponent,  
-    
-    
-  
-   
   ],
   imports: [  
     CommonModule,  
-    BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     OverlayModule,  
     CdkMenuModule,
     CalendarModule,
     FormsModule,
     TableModule,
     HttpClientModule,
-    RouterModule.forRoot(adminRouter),
+    RouterModule.forRoot(routes),  
   ],
   exports:[
    

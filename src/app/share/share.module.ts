@@ -33,7 +33,7 @@ import { BodyComponent } from './component/body/body.component';
     OverlayModule,  
     CdkMenuModule,
     CalendarModule,
-    FormsModule,
+    FormsModule, 
     TableModule,
     HttpClientModule,
   ] ,
@@ -42,6 +42,7 @@ import { BodyComponent } from './component/body/body.component';
     SidenavComponent,
     SublevelMenuComponent, 
     HeaderComponent, 
+    BodyComponent,
     
   
   ], 

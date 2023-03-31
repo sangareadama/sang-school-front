@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+
+<div *ngIf="!isConnexion()">
+    <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+    <app-header
+    [collapsed]="isSideNavCollapsed"
+    [screenWidth]="screenWidth"> 
+    </app-header>
+    <app-body   
+    [collapsed]="isSideNavCollapsed"  
+    [screenWidth]="screenWidth">  
+    <!-- <app-statistics></app-statistics>  -->
+    </app-body> 
+
+</div>
