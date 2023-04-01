@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Credentials } from '../../Models/Credential';
-import { Utilisateur } from '../../Models/Utilisateur';
+import { Credentials } from '../../../admin/Models/Credential';
+import { Utilisateur } from '../../../admin/Models/Utilisateur';
 
 @Injectable({
   providedIn: 'root'

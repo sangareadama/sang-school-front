@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+ import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { INavbarData } from './helper';
@@ -30,7 +30,7 @@ import { INavbarData } from './helper';
             *ngIf="!item.items || (item.items && item.items.length===0)"
             [routerLink]="[item.routeLink]"
             routerLinkActive="active-sublevel" 
-            [routerLinkActiveOptions]="{exact: true}" 
+            [routerLinkActiveOptions]="{exact: true}"  
           >
           <i class ="sublevel-link-icon"[class]="item.icon"></i>
           <span class="sublevel-link-text"  *ngIf="collapsed">{{item.label}}</span>

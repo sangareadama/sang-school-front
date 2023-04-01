@@ -2,8 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Utilisateur } from '../../Models/Utilisateur';
-import { LoginService } from '../../services/login/login.service';
-import { UtilisateurServiceService } from '../../services/utilisateur/utilisateur-service.service';
+import { LoginService } from '../../../shared/services/login/login.service';
+import { UtilisateurServiceService } from '../../../shared/services/utilisateur/utilisateur-service.service';
 import {ConfirmationService, PrimeNGConfig,ConfirmEventType, MessageService} from 'primeng/api';
 import {Message} from 'primeng/api';
 

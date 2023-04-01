@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, PrimeNGConfig,ConfirmEventType, MessageService} from 'primeng/api';
-import { LoginService } from 'src/app/admin/services/login/login.service';
+import { LoginService } from 'src/app/shared/services/login/login.service';
 import {Message} from 'primeng/api';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { Credentials } from 'src/app/admin/Models/Credential';
