@@ -6,10 +6,13 @@
     [collapsed]="isSideNavCollapsed"
     [screenWidth]="screenWidth"> 
     </app-header>
-    <app-body   
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+    <!-- <app-body   
     [collapsed]="isSideNavCollapsed"  
     [screenWidth]="screenWidth">  
-    <!-- <app-statistics></app-statistics>  -->
-    </app-body> 
+    <!-- <app-statistics></app-statistics>  
+    </app-body>  -->
 
 </div>

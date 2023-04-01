@@ -22,16 +22,15 @@ import {CalendarModule} from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
-import { UtilisateursComponent } from './utilisateur/utilisateurs/utilisateurs.component';
 import { AccueilComponent } from '../home/accueil/accueil.component';
 
 
 const routes: Routes = [
-  {  
-    path:'',
-    component: AccueilComponent,
-    // component: ResetPasswordComponent,
-  },
+  // {  
+  //   path:'',
+  //   component: DashboardComponent,
+  //   // component: ResetPasswordComponent,
+  // },
 ];
  
 // const adminRouter = [

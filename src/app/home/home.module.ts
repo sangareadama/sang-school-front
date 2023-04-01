@@ -24,7 +24,21 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MessageModule } from 'primeng/message';
+import { RouterModule, Routes } from '@angular/router';
 
+
+const routes: Routes = [
+
+  {
+    path:'',
+    component: LoginComponent,
+  },
+  {
+    path:'accueil',
+    component: AccueilComponent,
+  },
+
+];
 
 @NgModule({
   declarations: [
@@ -34,7 +48,6 @@ import { MessageModule } from 'primeng/message';
   imports: [
     CommonModule,
     FormsModule,
-    
     InputTextModule,
     HttpClientModule,
     ButtonModule,
@@ -53,7 +66,8 @@ import { MessageModule } from 'primeng/message';
     PasswordModule , 
   
     ProgressSpinnerModule,
-    MessageModule
+    MessageModule,
+    RouterModule.forChild(routes),
 
     
   ]

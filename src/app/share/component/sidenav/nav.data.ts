@@ -2,23 +2,23 @@ import { INavbarData } from "./helper";
 
 export const navbarDataAdmin:INavbarData[]=[
     {
-        routeLink:'dashboard',
+        routeLink:'admin/dashboard',
         icon:'fal fa-home',
         label:'Dashboard'
     },
     {
-        routeLink: 'utilisateur',
+        routeLink: 'admin/utilisateur',
         icon: 'fal fa-user',
         label: 'Utilisateur',
         items:[
             {
-                routeLink: 'utilisateur/liste',
+                routeLink: 'admin/utilisateur/liste',
                 icon: 'fal fa-user',
-                label:'Liste',
+                label:'Liste',  
                 
             },
             {
-                routeLink: 'utilisateur/roles',
+                routeLink: 'admin/utilisateur/roles',
                 icon: 'fal fa-user',
                 label:'Roles',
                 
@@ -26,18 +26,18 @@ export const navbarDataAdmin:INavbarData[]=[
         ]
     },
     {
-        routeLink: 'dataListe',
+        routeLink: 'admin/dataListe',
         icon: 'fal fa-list',
         label: 'Data Liste',
         items:[   
             {  
-                routeLink: 'dataListe/newsletter',
+                routeLink: 'admin/dataListe/newsletter',
                 icon: 'fal fa-user',
                 label:'Newsletters',
                 
             },
             {
-                routeLink: 'dataListe/nosContact',
+                routeLink: 'admin/dataListe/nosContact',
                 icon: 'fal fa-user',
                 label:'Nos Contact',
                 
@@ -47,17 +47,17 @@ export const navbarDataAdmin:INavbarData[]=[
 
 
     {
-        routeLink: 'products',
+        routeLink: 'admin/products',
         icon: 'fal fa-box-open',
         label: 'Products',
         items:[
             {
-                routeLink: 'products/level1',
+                routeLink: 'admin/products/level1',
                 icon: 'fal fa-box-open',
                 label:'liste produit1',
                 items:[
                     {
-                        routeLink: 'products/level1_1',
+                        routeLink: 'admin/products/level1_1',
                         icon: 'fal fa-box-open',
                         label:'produit1.1'
                     },
@@ -69,26 +69,26 @@ export const navbarDataAdmin:INavbarData[]=[
                 ]
             },
             {
-                routeLink: 'products/Level2',
+                routeLink: 'admin/products/Level2',
                 icon: 'fal fa-box-open',
                 label:'produit2',
                 items:[
                     {
-                        routeLink: 'products/Level2..1',
+                        routeLink: 'admin/products/Level2..1',
                         icon: 'fa fa-circle',
                         label:'produit2..1'
                     },
                 ]
             },
             {
-                routeLink: 'products/Level3',
+                routeLink: 'admin/products/Level3',
                 icon: 'fal fa-box-open',
                 label:'produit3'
             }
         ]
     },
     {
-        routeLink: 'statistics',
+        routeLink: 'admin/statistics',
         icon: 'fal fa-chart-bar',
         label: 'Statistics'
     },

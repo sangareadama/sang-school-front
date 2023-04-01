@@ -36,6 +36,10 @@ export class AppComponent implements OnInit {
     this.splitted= window.location.href.split("/");
     return this.splitted[this.splitted.length-1]=="accueil";
   }
+  islogin(): boolean {
+    this.splitted= window.location.href.split("/");
+    return this.splitted[this.splitted.length-1]=="login";
+  }
 }
 
 
