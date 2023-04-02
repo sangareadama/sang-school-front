@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Credentials } from '../../../admin/Models/Credential';
-import { Utilisateur } from '../../../admin/Models/Utilisateur';
+import { Credentials } from '../../models/Credential';
+import { Utilisateur } from '../../models/Utilisateur';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,6 @@ export class LoginService {
 
   // Authenticate and generate token   
   public  Authentication(loginData:Credentials):Observable<any>{
-    console.log("on a: "+ loginData.username+" "+loginData.password)
     return this.http.post<any>(`${this.apiServerUrl}/api/auth/authenticate`,loginData)
   }
 
@@ -38,12 +37,12 @@ export class LoginService {
   }   
  
   //login user: set token in localStorage
-  public loginUserInStorage(token: any){ 
+  public loginTokenInStorage(token: any){ 
     localStorage.setItem('token',token)
     return true;
-  }
+  }  
     
-  //islogin user is logged or not
+  //islogin user is logged or not  
   public isLoggedIn(){
     let tokenStr=localStorage.getItem("token")
     if(tokenStr==undefined || tokenStr=='' || tokenStr==null){

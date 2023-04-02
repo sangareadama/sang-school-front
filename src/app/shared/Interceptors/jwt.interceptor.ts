@@ -6,13 +6,12 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { UtilisateurServiceService } from '../../../shared/services/utilisateur/utilisateur-service.service';
-import { LoginService } from '../../../shared/services/login/login.service';
+import { LoginService } from '../services/login/login.service';
 
 @Injectable()
-export class TokenInterceptor implements HttpInterceptor {
+export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private utilisateurService:UtilisateurServiceService,private login: LoginService) {}
+  constructor(private login: LoginService) {} 
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -22,8 +21,7 @@ export class TokenInterceptor implements HttpInterceptor {
     if(token!==null){
   
       //get the jwt token from localstorage 
-      let authReq=request; 
-        console.log("avant :"+this.login.getToken())        
+      let authReq=request;       
         if(token!=null){ 
             authReq=authReq.clone({
                 setHeaders:{Authorization: `Bearer ${token}`},
@@ -40,10 +38,8 @@ export class TokenInterceptor implements HttpInterceptor {
             return throwError("session expirée");
           })  
         )
-        }  
-
-      // alert(this.jwtHelper.decodeToken(token|| '{}'));
-        
+      }  
+      // alert(this.jwtHelper.decodeToken(token|| '{}'));  
     }
     return next.handle(request);
   }

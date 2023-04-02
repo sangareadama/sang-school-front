@@ -3,7 +3,8 @@ import {ConfirmationService, PrimeNGConfig,ConfirmEventType, MessageService} fro
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import {Message} from 'primeng/api';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
-import { Credentials } from 'src/app/admin/Models/Credential';
+import { Credentials } from 'src/app/shared/models/Credential';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,14 @@ import { Credentials } from 'src/app/admin/Models/Credential';
 })
 export class LoginComponent implements OnInit  {
 
-  constructor(private login: LoginService,private formBuilder: FormBuilder,
+  constructor(private login: LoginService,private router:Router,private formBuilder: FormBuilder,
     private messageService:MessageService,private confirmationService:ConfirmationService){
 
   } 
   ngOnInit(): void {
     
     this.loginForm = this.formBuilder.group({
-			username: ['', [Validators.required, Validators.maxLength(255)]],
+		email: ['', [Validators.required, Validators.maxLength(255)]],
 			password: ['', [Validators.required, Validators.maxLength(255)]]
 		});
 
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit  {
   connexion(): void {
 
 			const utilisateur: Credentials = new Credentials(
-				this.loginForm.get('username').value,
+				this.loginForm.get('email').value,
 				this.loginForm.get('password')?.value
 			);
 			this.isLoading = true;
@@ -46,9 +47,11 @@ export class LoginComponent implements OnInit  {
 				next: (value:any) => {
 					localStorage.clear(); 
 					const jwtToken = value.token;
-          console.log("on a"+ value)
+       				this.login.loginTokenInStorage(jwtToken);
+					this.router.navigate(['admin'])
+         			console.log(value)
 					
-				},
+				}, 
 				error: (err:any) => {
 					if (err.status === 403) {
 						this.messageErreur = 'Nom d\'utilisateur ou mot de passe incorrect';

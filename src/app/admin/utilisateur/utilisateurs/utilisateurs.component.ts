@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Utilisateur } from '../../Models/Utilisateur';
+import { Utilisateur } from '../../../shared/models/Utilisateur';
 import { LoginService } from '../../../shared/services/login/login.service';
 import { UtilisateurServiceService } from '../../../shared/services/utilisateur/utilisateur-service.service';
 import {ConfirmationService, PrimeNGConfig,ConfirmEventType, MessageService} from 'primeng/api';
@@ -17,7 +17,7 @@ export class UtilisateursComponent implements OnInit {
   birthday!:Date;
 
   ngOnInit(): void {
-  //this.onGetUtilisateur(); 
+    this.onGetUtilisateur(); 
      
   }
 
@@ -89,7 +89,7 @@ export class UtilisateursComponent implements OnInit {
         accept: () => {
           this.onDeleteUtilisateur(utilisateurToDelete)
         },
-        reject: (type: any) => { 
+        reject: (type: any) => {   
             switch(type) {
                 case ConfirmEventType.REJECT:
                     this.messageService.add({severity:'warn', summary:'Rejeté', detail:'Vous avez rejeté'});
@@ -117,16 +117,16 @@ export class UtilisateursComponent implements OnInit {
     );
   } 
 
- public Authentication(logdata:any){
-    this.login.Authentication(logdata).subscribe({
-        next: (response) => {
-          this.login.loginUserInStorage(response.token);
-        },
+//  public Authentication(logdata:any){
+//     this.login.Authentication(logdata).subscribe({
+//         next: (response) => {
+//           this.login.loginUserInStorage(response.token);
+//         },
 
-      }
+//       }
       
-    )
+//     )
         
-  }
+//   }
 
 }
