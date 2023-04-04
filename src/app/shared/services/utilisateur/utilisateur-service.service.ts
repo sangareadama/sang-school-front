@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { urls } from '../../models/urls';
 import { Utilisateur } from '../../models/Utilisateur';
 
 @Injectable({
@@ -15,18 +16,17 @@ export class UtilisateurServiceService {
   constructor(private http: HttpClient) { }
 
   public getUtilisateurs():Observable<any[]>{
-    return this.http.get<any>(`${this.apiServerUrl}/api/demo-controller/liste`);
+    return this.http.get<any>(`${this.apiServerUrl}`+urls.listeUtilisateur);
    // return this.http.get<any>(`${this.apiServerUrl}/api/auth/liste`);
   }    
   public addUtilisateur(utilisateur:any):Observable<Utilisateur>{
-    return this.http.post<Utilisateur>(`${this.apiServerUrl}/api/auth/register`,utilisateur);
+    return this.http.post<Utilisateur>(`${this.apiServerUrl}`+urls.enregistrerUtilisateur,utilisateur);
   }
   public updateUtilisateur(utilisateur:Utilisateur):Observable<Utilisateur>{
-    return this.http.post<Utilisateur>(`${this.apiServerUrl}/api/user/updateUtilisateur`,utilisateur);
+    return this.http.post<Utilisateur>(`${this.apiServerUrl}`+urls.modifierUtilisateur,utilisateur);
   } 
   public deleteUtilisateur(utilisateur:any):Observable<any>{
-    console.log(utilisateur)
-    return this.http.post<any>(`${this.apiServerUrl}/api/demo-controller/supprimer`,utilisateur);
+    return this.http.post<any>(`${this.apiServerUrl}`+urls.supprimerUtilisateur,utilisateur);
   }  
 
 

@@ -5,6 +5,7 @@ import {Message} from 'primeng/api';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { Credentials } from 'src/app/shared/models/Credential';
 import { Router } from '@angular/router';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit  {
 
-  constructor(private login: LoginService,private router:Router,private formBuilder: FormBuilder,
+  constructor(private login: LoginService,private router:Router,private formBuilder: FormBuilder, private navigation: NavigationService,
     private messageService:MessageService,private confirmationService:ConfirmationService){
 
   } 
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit  {
 					localStorage.clear(); 
 					const jwtToken = value.token;
        				this.login.loginTokenInStorage(jwtToken);
-					this.router.navigate(['admin'])
+					this.navigation.goToAdmin();
          			console.log(value)
 					
 				}, 

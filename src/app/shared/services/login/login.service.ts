@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Credentials } from '../../models/Credential';
+import { urls } from '../../models/urls';
 import { Utilisateur } from '../../models/Utilisateur';
 
 @Injectable({
@@ -26,7 +27,7 @@ export class LoginService {
 
   // Authenticate and generate token   
   public  Authentication(loginData:Credentials):Observable<any>{
-    return this.http.post<any>(`${this.apiServerUrl}/api/auth/authenticate`,loginData)
+    return this.http.post<any>(`${this.apiServerUrl}`+urls.auth,loginData)
   }
 
 
@@ -40,7 +41,7 @@ export class LoginService {
   public loginTokenInStorage(token: any){ 
     localStorage.setItem('token',token)
     return true;
-  }  
+  }
     
   //islogin user is logged or not  
   public isLoggedIn(){
@@ -92,6 +93,7 @@ export class LoginService {
     
    
   }
+
 
   //get userRole
   public getUserRole(){ 
