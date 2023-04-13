@@ -1,11 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Utilisateur } from '../../../shared/models/Utilisateur';
 import { LoginService } from '../../../shared/services/login/login.service';
 import { UtilisateurServiceService } from '../../../shared/services/utilisateur/utilisateur-service.service';
-import {ConfirmationService, PrimeNGConfig,ConfirmEventType, MessageService} from 'primeng/api';
+import {ConfirmationService, PrimeNGConfig,ConfirmEventType, MessageService, SelectItem} from 'primeng/api';
 import {Message} from 'primeng/api';
+import { TableauUtilisateur } from 'src/app/shared/models/TableauUtilisateur';
+import {uniq} from 'lodash';
 
 @Component({
   selector: 'app-utilisateurs',
@@ -14,71 +16,171 @@ import {Message} from 'primeng/api';
   providers: [ConfirmationService,MessageService]
 })
 export class UtilisateursComponent implements OnInit {
-  birthday!:Date;
+
+  constructor(private utilisateurServiceService:UtilisateurServiceService,private login: LoginService,private formBuilder: FormBuilder
+    ,private messageService:MessageService,private confirmationService:ConfirmationService ) { }
+
 
   ngOnInit(): void {
+    this.rolesSelect = [
+      {
+        label: 'Administrateur',
+        value: 'ADMIN'
+      },
+      {
+        label: 'Super administrateur',
+        value: 'SUPER_ADMIN'
+      },
+      {
+        label: 'Utilisateur',
+        value: 'UTILISATEUR'
+      }
+    ];
+
+    this.statutSelect = [
+      {
+        label: 'Actif',
+        value: 'ACTIF'
+      },
+      {
+        label: 'Inactif',
+        value: 'INACTIF'
+      }
+    ];
+
+    
+    this.messageErreur = [];
+    this.messageActif = false;
+    this.initFormUtilisateur();
+
+   // this.utilisateurConnecte = this.authService.getUtilisateurConnecte();
+    //this.recupererDonneesUtilisateurs();
     this.onGetUtilisateur(); 
      
   }
 
-  constructor(private utilisateurServiceService:UtilisateurServiceService,private login: LoginService,
-               private messageService:MessageService,private confirmationService:ConfirmationService ) { }
+
  
   public utilisateurs!: Utilisateur[];
+  utilisateurTableau: TableauUtilisateur;
+  isLoading = false;
+  utilisateurSelectonne: Utilisateur;
+  ouvrirModaleSaisieUtilisateur!: boolean;
+  submitted!: boolean;
   utilisateurForm!:FormGroup;
+
+  messageActif = false;
+  messageErreur: Message[] = [];
+
+
+  rolesSelect: SelectItem[];
+  statutSelect: SelectItem[];
+  statuts: string[] = [];
+  roles: string[] = [];
+  readonlyEmailLogin = false;
+
+
+  
   message!:string;
-  utilisateur:Utilisateur= new Utilisateur(0,"","","","",""); 
-  utilisateurUpdate:Utilisateur = new Utilisateur(0,"","","","","")
+  //utilisateur:Utilisateur= new Utilisateur(0,"","","","",""); 
+  //utilisateurUpdate:Utilisateur = new Utilisateur(0,"","","","","")
  
   saveUtilisateur!: boolean; 
   updateUtilisateur!: boolean;  
   deleteUtilisateur!: boolean;
-  submitted!:boolean;
 
   msgs: Message[] = [];
   position!: string;
 
- 
-  openUtilisateurdialog() {
-    this.initFormUtilisateur(); 
-    this.submitted = false;
-    this.saveUtilisateur = true;
-  }
-
   initFormUtilisateur() {  
-    this.utilisateurForm = new FormGroup({
-    id:new FormControl(null, Validators.required) ,
-    nom:new FormControl(null, Validators.required) ,
-    prenom:new FormControl(null, Validators.required) ,
-    email:new FormControl(null, Validators.required) ,
-    password:new FormControl(null, Validators.required) ,
-    })  
+    this.utilisateurForm = this.formBuilder.group({
+      nom: [null , [Validators.required, Validators.maxLength(255)]],
+      prenoms: [null, [Validators.required, Validators.maxLength(255)]],
+      role: [this.rolesSelect[2].value, [Validators.required]],
+      email: [null, [Validators.required, Validators.email, Validators.maxLength(255)]],
+      statut: [this.statutSelect[0].value, [Validators.required]],
+      username: [null, [Validators.required]]
+    });
   } 
 
+  fermerModale() {
+    this.utilisateurForm.reset();
+    this.messageActif = false;
+    this.ouvrirModaleSaisieUtilisateur = false;
+    this.isLoading = false;
+  }
 
   public onSaveUtilisateur(){ 
-    this.submitted = true;       
-    this.utilisateurServiceService.addUtilisateur(this.utilisateurForm.value).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.onGetUtilisateur();
-        this.initFormUtilisateur();
-      },
+    if (this.utilisateurForm.invalid) {
+      this.messageErreur = [{detail: 'Veuillez saisir correctement tous les champs', severity: 'error'}];
+      this.messageActif = true;
+    } else {
+      this.messageActif = false;
+      this.isLoading = true;
+      this.submitted = true; 
+      this.utilisateurServiceService.addUtilisateur(this.utilisateurForm.value).subscribe({
+        next: (value) => {
+          this.onGetUtilisateur();
+          this.fermerModale();
+        },
+        error: (error) => {
+          if (error.error?.message) {
+            this.messageErreur = error.error?.message;
+            this.messageActif = true;
+          }
+        },
+        complete: () => {
+          this.isLoading = false;
+        }
+      });
     }
-    ) 
   }
-
-  
-  public onGetUtilisateur(){
+   
+  public onGetUtilisateur():void{
+    this.isLoading = true;
     this.utilisateurServiceService.getUtilisateurs().subscribe({
-      next: (response) => {
-        this.utilisateurs=response;
+      next: (data) => {
+        this.utilisateurTableau = data;
+        this.roles = uniq(data.utilisateurs?.map(u => u.role)).sort();
+        this.statuts = uniq(data.utilisateurs?.map(u => u.statut)).sort();
+
+        console.log(this.utilisateurTableau)
       },
-      // complete: () => {
-      //   this.loading = false;
-      // }
+      complete: () => {
+         this.isLoading = false;
+      },
+      error: (error) => {
+        if (error.error?.message) {
+          this.messageErreur = error.error?.message;
+          this.messageActif = true;
+        }
+      }
     });  
   } 
+
+  public openUtilisateurdialog() {
+    this.ouvrirModaleSaisieUtilisateur = true;
+    this.readonlyEmailLogin=false;
+    this.messageActif = false;
+  }
+
+  modifier(utilisateur: Utilisateur) {
+    this.utilisateurForm.setValue({
+      nom: utilisateur.nom,
+      prenoms: utilisateur.prenoms,
+      role: this.rolesSelect.find(r => r.label === utilisateur.role).value,
+      email: utilisateur.email,
+      statut: this.statutSelect.find(s => s.label === utilisateur.statut).value,
+      username: utilisateur.username
+      
+    });
+    //this.readonlyEmailLogin=true;
+    this.ouvrirModaleSaisieUtilisateur = true;
+  }
+
+
+
+
 
   onDeleteConfirmation(position: string,utilisateurToDelete:any) {
     this.position = position;

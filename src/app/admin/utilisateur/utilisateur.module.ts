@@ -26,6 +26,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
     ToastModule,   
     DialogModule,
     ProgressBarModule,
+    ProgressSpinnerModule,
     FileUploadModule,
     ToolbarModule,
     RatingModule,

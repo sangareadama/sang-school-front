@@ -1,9 +1,9 @@
 export const urls = {
 
      auth : '/api/auth/authenticate',
-     listeUtilisateur : '/api/demo-controller/liste',
-     enregistrerUtilisateur : '/api/auth/register',
+     listeUtilisateur : '/api/utilisateur/liste',
+     enregistrerUtilisateur : '/api/utilisateur/enregistrerOuModifier',
      modifierUtilisateur : '/api/user/updateUtilisateur',
-     supprimerUtilisateur : '/api/demo-controller/supprimer'
+     supprimerUtilisateur : '/api/utilisateur/supprimer'
 
-}
+} 

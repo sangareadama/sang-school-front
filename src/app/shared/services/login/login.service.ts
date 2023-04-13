@@ -27,6 +27,7 @@ export class LoginService {
 
   // Authenticate and generate token   
   public  Authentication(loginData:Credentials):Observable<any>{
+     this.logout();
     return this.http.post<any>(`${this.apiServerUrl}`+urls.auth,loginData)
   }
 

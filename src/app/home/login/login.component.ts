@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit  {
   ngOnInit(): void {
     
     this.loginForm = this.formBuilder.group({
-		email: ['', [Validators.required, Validators.maxLength(255)]],
+		username: ['', [Validators.required, Validators.maxLength(255)]],
 			password: ['', [Validators.required, Validators.maxLength(255)]]
 		});
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit  {
   connexion(): void {
 
 			const utilisateur: Credentials = new Credentials(
-				this.loginForm.get('email').value,
+				this.loginForm.get('username').value,
 				this.loginForm.get('password')?.value
 			);
 			this.isLoading = true;
