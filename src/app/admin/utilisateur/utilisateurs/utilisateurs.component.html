@@ -1,14 +1,14 @@
 <div class="col-12">
-  <span *ngIf="messageActif" class="flex justify-content-center mt-1">
+  <span *ngIf="messageActif" class="flex justify-content-center">
          <p-messages [(value)]="messageErreur" ></p-messages>
        </span>
-   <div class="container-fluid mt-2 ">
+   <div class="container-fluid ">
      <div class="row">
-       <div class="cadre-nombre col-xl-4 col-md-6 col-sm-12 p-1 ">
-         <div class="surface-card shadow-5 p-2 border-round">
-           <div class="flex justify-content-between mb-3">
+       <div class="cadre-nombre col-xl-4 col-md-6 col-sm-12 ">
+         <div class="surface-card  p-1 border-round">
+           <div class="flex justify-content-between">
              <div class="flex align-items-center justify-content-center bg-blue-10 br-5 border-round"
-                  style="width:4rem;height:4rem">
+                  style="width:2rem;height:2rem">
                <i class="fa fa-users" aria-hidden="true" style="font-size: 3em;color: rgb(77, 165, 48);"></i>
              </div>
              <div>
@@ -20,11 +20,11 @@
            </div>
          </div>
        </div>
-       <div class="cadre-nombre col-xl-4 col-md-6 col-sm-12 p-1 ">
-         <div class="surface-card shadow-5 p-2 border-round">
-           <div class="flex justify-content-between mb-3">
+       <div class="cadre-nombre col-xl-4 col-md-6 col-sm-12 ">
+         <div class="surface-card  p-1 border-round">
+           <div class="flex justify-content-between">
              <div class="flex align-items-center justify-content-center bg-blue-10 br-5 border-round"
-                  style="width:4rem;height:4rem">
+              style="width:2rem;height:2rem">
                <i class="fa fa-check" aria-hidden="true" style="font-size: 3em;color: rgb(77, 165, 48);"></i>
              </div>
              <div>
@@ -36,11 +36,11 @@
            </div>
          </div>
        </div>
-       <div class="cadre-nombre col-xl-4 col-md-6 col-sm-12 p-1 ">
-         <div class="surface-card shadow-5 p-2 border-round">
-           <div class="flex justify-content-between mb-3">
+       <div class="cadre-nombre col-xl-4 col-md-6 col-sm-12">
+         <div class="surface-card  p-1 border-round">
+           <div class="flex justify-content-between ">
              <div class="flex align-items-center justify-content-center bg-blue-10 br-5 border-round"
-                  style="width:4rem;height:4rem">
+                style="width:2rem;height:2rem">
                <i class="fa fa-exclamation-circle" aria-hidden="true" style="font-size: 3em;color: rgb(77, 165, 48);"></i>
              </div>
              <div>
@@ -55,13 +55,12 @@
      </div>
    </div>
  </div>
-
+<br>
 
 <div class="row">
    <div class="card col-12">
-       <p-toolbar styleClass="mb-4 gap-2">
+       <p-toolbar styleClass="mb-2 gap-2" >
            <ng-template pTemplate="left">
-
            </ng-template>
            <ng-template pTemplate="right">
                <p-button  icon="pi pi-user" label="Ajouter" (onClick)="openUtilisateurdialog()" [style]="{color:'white',border:'#E67B3B', background:'#E67B3B'}"></p-button>
@@ -70,26 +69,26 @@
        </p-toolbar>
      <p-table #dt1 [value]="utilisateurTableau?.utilisateurs" dataKey="username" [(selection)]="utilisateurSelectonne" [rowHover]="true"
               styleClass="p-datatable-gridlines" sortField="nom" [scrollable]="true" [tableStyle]="{'min-width': '10rem'}"
-              [rows]="12" [paginator]="true" selectionMode="single" scrollHeight="700px" [rowsPerPageOptions]="[10,25,50]">
+              [rows]="10" [paginator]="true" selectionMode="single" scrollHeight="400px" [rowsPerPageOptions]="[10,25,50]">
        <ng-template   pTemplate="header"  let-columns>
          <tr >
 <!--            <th style="width: 4rem">-->
 <!--                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>-->
 <!--            </th>-->
 <!--            <th style="width:500px" pSortableColumn="dateDebut">Code<p-sortIcon field="dateDebut"></p-sortIcon></th>-->
-           <th class="text-center" style="width:300px" pSortableColumn="nom" >Nom <p-sortIcon field="nom"></p-sortIcon></th>
-           <th class="text-center" style="width:300px"  pSortableColumn="prenoms">Prenoms<p-sortIcon field="prenoms"></p-sortIcon></th>
+           <th  class="text-center" style="width:300px" pSortableColumn="nom" >Nom <p-sortIcon field="nom"></p-sortIcon></th>
+           <th  class="text-center" style="width:200px"  pSortableColumn="prenoms">Prenoms<p-sortIcon field="prenoms"></p-sortIcon></th>
            <th  class="text-center" style="width:200px" pSortableColumn="profil">Profil<p-sortIcon field="profil"></p-sortIcon></th>
            <th  class="text-center" style="width:300px"  pSortableColumn="username">Login<p-sortIcon field="username"></p-sortIcon></th>
-           <th class="text-center" style="width:500px" pSortableColumn="email">Email<p-sortIcon field="email"></p-sortIcon></th>
+           <th  class="text-center" style="width:300px" pSortableColumn="email">Email<p-sortIcon field="email"></p-sortIcon></th>
            <th  class="text-center" style="width:200px" pSortableColumn="statut">Statut<p-sortIcon field="statut"></p-sortIcon></th>
-           <th  class="text-center" class="text-center" style="width:100px">Actions</th>
+           <th  class="text-center" style="width:100px">Actions</th>
          </tr>
-         <tr >
+         <tr class="filter" >
 <!--            <th>-->
 <!--            </th>-->
            <th>
-             <input pInputText type="text" style="width: 100%;"(input)="dt1.filter($any($event.target).value, 'nom', 'contains')" [value]="$any(dt1.filters['nom'])?.value" class="p-column-filter">
+             <input pInputText type="text" style="width:100px;"(input)="dt1.filter($any($event.target).value, 'nom', 'contains')" [value]="$any(dt1.filters['nom'])?.value" class="p-column-filter">
            </th>
            <th>
              <input pInputText type="text" (input)="dt1.filter($any($event.target).value, 'prenoms', 'contains')" [value]="$any(dt1.filters['prenoms'])?.value" class="p-column-filter">
@@ -200,13 +199,10 @@
        </div>
      </div>
      <div class="field">
-
-
      </div>
-
-     <span *ngIf="messageActif" class="flex justify-content-center mt-1">
+    <span *ngIf="messageActif" class="flex justify-content-center mt-1">
          <p-messages [(value)]="messageErreur" ></p-messages>
-       </span>
+    </span>
 
    </form>
  </ng-template>

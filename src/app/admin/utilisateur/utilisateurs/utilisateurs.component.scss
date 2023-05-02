@@ -1,5 +1,8 @@
 .cadre-nombre .surface-card{
     background-color: white !important;
+    border-radius: 0.5em;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
     h2{
       color: #70726E;
       margin-right: 1.5em;
@@ -10,7 +13,6 @@
       text-transform: uppercase;
       color: #70726E;
       font-weight: bold;
-  
     }
   }
   
@@ -23,4 +25,11 @@
     color: red;
   }
   
+  ::ng-deep .p-toolbar{
+      padding:0.3em !important;
+    }
+
+    ::ng-deep .filter{
+      height:0.3em !important;
+    }
   
