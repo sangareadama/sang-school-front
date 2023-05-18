@@ -56,7 +56,8 @@ const routes: Routes = [
     ButtonModule,
     MultiSelectModule,
     ReactiveFormsModule,
-    ToastModule,   
+    ToastModule, 
+      
     DialogModule,
     ProgressBarModule,
     ProgressSpinnerModule,
@@ -66,7 +67,6 @@ const routes: Routes = [
     DropdownModule,
     RadioButtonModule,
     InputNumberModule,
-    ConfirmDialogModule,
     MessagesModule,
     TreeSelectModule, 
     

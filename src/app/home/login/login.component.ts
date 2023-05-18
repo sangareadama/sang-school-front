@@ -11,12 +11,12 @@ import { NavigationService } from 'src/app/shared/services/navigation/navigation
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [ConfirmationService,MessageService]
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit  {
 
   constructor(private login: LoginService,private router:Router,private formBuilder: FormBuilder, private navigation: NavigationService,
-    private messageService:MessageService,private confirmationService:ConfirmationService){
+    private messageService:MessageService){
 
   } 
   ngOnInit(): void {

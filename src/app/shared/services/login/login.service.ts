@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Credentials } from '../../models/Credential';
 import { urls } from '../../models/urls';
 import { Utilisateur } from '../../models/Utilisateur';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ import { Utilisateur } from '../../models/Utilisateur';
 export class LoginService {
   private apiServerUrl=environment.apiBaseUrl;
 
-  constructor(private http:HttpClient,private router : Router) { }
+ 
+  constructor(private http:HttpClient,private router : Router,private jwtHelper: JwtHelperService) { }
 
   //current user 
   public getCurrentUser():Observable<any>{ 
@@ -66,8 +68,7 @@ export class LoginService {
 
   //logout : remove token from local storage
   public logout(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('user')
+    localStorage.clear();
     return true;
   }
 
@@ -81,24 +82,41 @@ export class LoginService {
       localStorage.setItem('user', JSON.stringify(user));
   }
 
-  // get user
-  public getUser(){
-    
-    let userStr=localStorage.getItem("user");
-    if(userStr!=null){
-      return JSON.parse(userStr);
-    }else{
-      this.logout();
-      return null;
+  getUtilisateurConnecte(): Utilisateur {
+    if (this.isLoggedIn()) {
+      const token = this.jwtHelper.decodeToken(this.getToken());
+      console.log(this.getToken())
+      const utilisateur = new Utilisateur();
+      utilisateur.nom = token.nom;
+      utilisateur.prenoms = token.prenoms; 
+      utilisateur.username = token.username;
+      utilisateur.profil = token.role;
+      utilisateur.email = token.email;
+      utilisateur.statut = token.statut;
+      return utilisateur;
     }
+    return null;
+  }
+
+
+  // // get user
+  // public getUser(){
+    
+  //   let userStr=localStorage.getItem("user");
+  //   if(userStr!=null){
+  //     return JSON.parse(userStr);
+  //   }else{
+  //     this.logout();
+  //     return null;
+  //   }
     
    
-  }
+  // }
 
 
   //get userRole
-  public getUserRole(){ 
-    let user = this.getUser();
-    return user.roles[0].libelle;
-  }
+  // public getUserRole(){ 
+  //   let user = this.getUser();
+  //   return user.roles[0].libelle;
+  // }
 }

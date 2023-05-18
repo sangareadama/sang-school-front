@@ -5,5 +5,6 @@ export class Utilisateur {
     role: string;
     email: string;
     statut: string;
+    profil: any;
    }
    

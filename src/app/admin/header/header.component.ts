@@ -1,11 +1,16 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Utilisateur } from 'src/app/shared/models/Utilisateur';
+import { LoginService } from 'src/app/shared/services/login/login.service';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 import { languages, notifications, userItems } from './header-dummy-data';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [MessageService]
 })
 export class HeaderComponent implements OnInit {
   @Input() collapsed=false;
@@ -15,17 +20,19 @@ export class HeaderComponent implements OnInit {
   languages=languages;
   notifications=notifications;
   userItems=userItems;
+  utilisateur : Utilisateur;
 
   nombreMessage!:any;
 
   // public utilisateurCourant!: Utilisateur;
 
-  constructor( private router : Router ) { }
-
-  valeur="okkkk";
+  constructor( private router : Router , public loginService : LoginService,private navigation: NavigationService
+    ,private messageService:MessageService ) { }
 
   ngOnInit(): void { 
-    // this.onGetUser()
+     this.onGetUtilisateurConnecte()
+    //alert(this.loginService.getUtilisateurConnecte().nom)
+    
     this.checkCanShowSearchAsOverlay(window.innerWidth);
     this.selectedLanguage=this.languages[0]
     // this.ongetNombreMessage();
@@ -43,20 +50,22 @@ export class HeaderComponent implements OnInit {
   //   );
   // } 
 
-  // public onGetUser(){
-  //  this.utilisateurCourant= this.login.getUser();
-  // }
+   public onGetUtilisateurConnecte(){
+    this.utilisateur = this.loginService.getUtilisateurConnecte();
+   }
 
-  // public logout(){
-  //   this.login.logout();
-  //    if(!this.login.isLoggedIn()){
-  //      this.toast.info({detail:"Loged out Message",summary:"vous etes déconnecté avec succès !",duration:4000})
-  //    }else{
-  //     this.toast.error({detail:"Error Message",summary:'Une erreure à survenue: ',duration:4000})
-  //    }
-  //    this.router.navigate(['login'])
-  //   // window.location.reload();
-  // }
+  public OnDeconnection(){
+    this.loginService.logout();
+     if(!this.loginService.isLoggedIn()){
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+      this.navigation.goToConnexion();
+    
+     }else{
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+     }
+     //this.router.navigate(['login'])
+    // window.location.reload();
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {

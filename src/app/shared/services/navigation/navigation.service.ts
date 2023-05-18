@@ -21,9 +21,9 @@ export class NavigationService {
 		this.goTo('admin');
 	}
 
-	// goToConnexion(): void {
-	// 	this.goTo('connexion');
-	// }
+	goToConnexion(): void {
+		this.goTo('login');
+	 }
 
 
 }

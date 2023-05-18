@@ -24,6 +24,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { MessageModule } from 'primeng/message';
     MatIconModule,
     MatFormFieldModule,
     ProgressSpinnerModule,
-    MessageModule
+    MessageModule,
+    ToastModule,
 
     
   ]

@@ -1,3 +1,4 @@
+
 <div class="head" [ngClass]="getHeadClass()">
     <div class="head-content">
         <div class="head-content-left">
@@ -17,6 +18,8 @@
                 </div>
             </div>
         </div>
+
+        
         
         <div class="head-content-right">
             <div class="head-nemu">
@@ -48,7 +51,10 @@
                       <!-- <img [src]="im.url"  class="user-avatar" alt="user"> -->
                     <div class="circle-indicator pulse"></div>
                 </div>
-                <!-- <h4>{{login.getUser().username}}</h4>   -->
+                <h5 class="sidenav-link-text font-bold text-lg" >
+                    <!-- {{ (utilisateur?.nom + ' ' + utilisateur?.prenoms).length < 6 ? (utilisateur?.nom + ' ' + utilisateur?.prenoms) : (utilisateur?.nom.substring(0, 1).toUpperCase() + ' . ' + utilisateur?.prenoms.substring(0, 1).toUpperCase()).substr(0, 13) + "..."  }} -->
+                    {{utilisateur?.nom.substring(0, 1).toUpperCase() + ' . ' + utilisateur?.prenoms.substring(0, 1).toUpperCase()}}
+                </h5> 
             </div>
         </div>  
     </div>  
@@ -131,14 +137,15 @@
                 </a>
             </li> -->
             
-            <!-- <li (click)="logout()">
+            <li (click)=" OnDeconnection()">
                 <a>
                     <i class="icon" [ngClass]="'far fa-power-off'"></i>
                     <span>Logout</span>
                 </a  >
             </li>
-             -->
+            
         
        </ul> 
     </div>
 </ng-template>
+

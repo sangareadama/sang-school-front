@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { SharedModule } from '../shared/shared.module';
+import { ToastModule } from 'primeng/toast';
 
 const adminRouter = [
   {path: 'admin', component: MainAdminComponent, 
@@ -77,6 +78,7 @@ const adminRouter = [
     CalendarModule,
     FormsModule,  
     TableModule,
+    ToastModule,
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(adminRouter),

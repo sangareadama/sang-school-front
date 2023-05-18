@@ -67,6 +67,9 @@
                <p-button icon="pi pi-user-edit" class="ml-2" label="Modifier" [disabled]="!utilisateurSelectonne" (onClick)="modifier(utilisateurSelectonne)" [style]="{color:'white',border:'#E67B3B', background:'#E67B3B'}"></p-button>
            </ng-template>
        </p-toolbar>
+       <div>
+        <p-toast></p-toast>
+      </div>
      <p-table #dt1 [value]="utilisateurTableau?.utilisateurs" dataKey="username" [(selection)]="utilisateurSelectonne" [rowHover]="true"
               styleClass="p-datatable-gridlines" sortField="nom" [scrollable]="true" [tableStyle]="{'min-width': '10rem'}"
               [rows]="10" [paginator]="true" selectionMode="single" scrollHeight="400px" [rowsPerPageOptions]="[10,25,50]">

@@ -13,12 +13,12 @@ import {uniq} from 'lodash';
   selector: 'app-utilisateurs',
   templateUrl: './utilisateurs.component.html',
   styleUrls: ['./utilisateurs.component.scss'],
-  providers: [ConfirmationService,MessageService]
+  providers: [MessageService]
 })
 export class UtilisateursComponent implements OnInit {
 
   constructor(private utilisateurServiceService:UtilisateurServiceService,private login: LoginService,private formBuilder: FormBuilder
-    ,private messageService:MessageService,private confirmationService:ConfirmationService ) { }
+    ,private messageService:MessageService ) { }
 
 
   ngOnInit(): void {
@@ -131,6 +131,7 @@ export class UtilisateursComponent implements OnInit {
         },
         complete: () => {
           this.isLoading = false;
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
         }
       });
     }
@@ -148,6 +149,7 @@ export class UtilisateursComponent implements OnInit {
       },
       complete: () => {
          this.isLoading = false;
+         
       },
       error: (error) => {
         if (error.error?.message) {
@@ -182,28 +184,28 @@ export class UtilisateursComponent implements OnInit {
 
 
 
-  onDeleteConfirmation(position: string,utilisateurToDelete:any) {
-    this.position = position;
-    this.confirmationService.confirm({
-        message: 'Voulez vous supprimer ce element ?',
-        header: 'Confirmation de suppression',
-        icon: 'pi pi-info-circle',
-        accept: () => {
-          this.onDeleteUtilisateur(utilisateurToDelete)
-        },
-        reject: (type: any) => {   
-            switch(type) {
-                case ConfirmEventType.REJECT:
-                    this.messageService.add({severity:'warn', summary:'Rejeté', detail:'Vous avez rejeté'});
-                break;
-                case ConfirmEventType.CANCEL:
-                    this.messageService.add({severity:'warn', summary:'Annulé', detail:'Vous avez annulé'});
-                break;
-            }
-        },
-        key: "positionDialog"
-    });
-  }
+  // onDeleteConfirmation(position: string,utilisateurToDelete:any) {
+  //   this.position = position;
+  //   this.confirmationService.confirm({
+  //       message: 'Voulez vous supprimer ce element ?',
+  //       header: 'Confirmation de suppression',
+  //       icon: 'pi pi-info-circle',
+  //       accept: () => {
+  //         this.onDeleteUtilisateur(utilisateurToDelete)
+  //       },
+  //       reject: (type: any) => {   
+  //           switch(type) {
+  //               case ConfirmEventType.REJECT:
+  //                   this.messageService.add({severity:'warn', summary:'Rejeté', detail:'Vous avez rejeté'});
+  //               break;
+  //               case ConfirmEventType.CANCEL:
+  //                   this.messageService.add({severity:'warn', summary:'Annulé', detail:'Vous avez annulé'});
+  //               break;
+  //           }
+  //       },
+  //       key: "positionDialog"
+  //   });
+  // }
 
   public onDeleteUtilisateur(utilisateurToDelete:any){
     this.utilisateurServiceService.deleteUtilisateur(utilisateurToDelete).subscribe(
